@@ -1,0 +1,109 @@
+!DOCTYPE html
+html lang=th
+head
+meta charset=UTF-8
+titleTSS Machine Calculatortitle
+
+style
+body {
+  font-family Arial, sans-serif;
+  background #0b3a6f;
+  color white;
+  text-align center;
+  padding-top 30px;
+}
+
+.container {
+  background #102c4f;
+  width 420px;
+  margin auto;
+  padding 25px;
+  border-radius 12px;
+  box-shadow 0 0 15px rgba(0,0,0,0.4);
+}
+
+.logo {
+  width 180px;
+  margin-bottom 12px;
+}
+
+input {
+  width 90%;
+  padding 10px;
+  margin 6px 0;
+  border-radius 6px;
+  border none;
+  font-size 16px;
+}
+
+button {
+  margin-top 12px;
+  padding 12px 20px;
+  font-size 16px;
+  font-weight bold;
+  background orange;
+  border none;
+  border-radius 6px;
+  cursor pointer;
+}
+
+buttonhover {
+  background #ffb347;
+}
+
+.result {
+  margin-top 15px;
+  font-size 18px;
+  font-weight bold;
+  color #00ffcc;
+}
+style
+head
+
+body
+
+div class=container
+
+  !-- เปลี่ยนเป็นโลโก้จริงของ TSS ได้ --
+  img src=httpsvia.placeholder.com300x100text=TSS+LOGO class=logo
+
+  h2TSS Machine Calculatorh2
+
+  input id=AL type=number placeholder=กรอกค่า AL
+  input id=X type=number placeholder=กรอกค่า X
+  input id=Y type=number placeholder=กรอกค่า Y
+  input id=slot type=number placeholder=กรอกจำนวนช่อง
+
+  button onclick=calculate()คำนวณbutton
+
+  div class=result id=resultdiv
+
+div
+
+script
+function calculate() {
+  let AL = parseFloat(document.getElementById(AL).value);
+  let X = parseFloat(document.getElementById(X).value);
+  let Y = parseFloat(document.getElementById(Y).value);
+  let slot = parseFloat(document.getElementById(slot).value);
+
+  if (isNaN(AL)  isNaN(X)  isNaN(Y)  isNaN(slot)) {
+    document.getElementById(result).innerText = กรุณากรอกค่าให้ครบ;
+    return;
+  }
+
+   สูตรคำนวณ
+  let R = (Y  2) + (Math.pow(X, 2)  (8  Y));
+  let circumferencePart = (2  Math.PI  R)  360;
+  let answer = (AL  circumferencePart)  slot;
+
+   ปัดเศษ 2 ตำแหน่ง ตามหลักคณิตศาสตร์
+  let rounded = Math.round(answer  100)  100;
+
+  document.getElementById(result).innerText =
+    คำตอบสุดท้าย =  + rounded.toFixed(2);
+}
+script
+
+body
+html
